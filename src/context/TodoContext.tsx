@@ -39,7 +39,7 @@ export const TodoProvider: FC<TodoProviderProps> = ({ children }) => {
     };
 
     const toggleTodo = (id: number) => {
-        setTodos(todos.map(todo => todo.id === id ? { ...todo, completed: !todo.completed } : todo));
+        setTodos(todos.map(todo => todo.id === id ? {...todo, completed: !todo.completed} : todo));
     };
 
     return (

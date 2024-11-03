@@ -1,3 +1,4 @@
+
 ul {
     list-style-type: none;
     padding: 0;
@@ -40,6 +41,6 @@ ul {
   
   .completed {
     text-decoration: line-through;
-    color: #6c757d;
+    color: #070606;
   }
   

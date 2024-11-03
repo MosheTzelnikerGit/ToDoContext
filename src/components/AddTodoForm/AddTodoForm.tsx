@@ -18,7 +18,7 @@ const AddTodoForm:React.FC = () => {
 
     return (
         <form onSubmit={handleSubmit}>
-            <input type="text"
+            <input className="input" type="text"
              value={text}
               onChange={(e) => setText(e.target.value)}
               placeholder="Enter new todo"
