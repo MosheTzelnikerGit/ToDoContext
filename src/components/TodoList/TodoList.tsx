@@ -14,6 +14,7 @@ const TodoList: React.FC = () => {
             {todo.text}
           </span>
           <button onClick={() => removeTodo(todo.id)}>Delete</button>
+          <button >Update</button>
         </li>
       ))}
     </ul>
