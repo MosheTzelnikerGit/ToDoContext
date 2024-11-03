@@ -5,7 +5,6 @@ import "./AddTodoForm.css";
 const AddTodoForm:React.FC = () => {
 
     const { addTodo } = useTodo();
-
     const [text, setText] = useState('');
 
     const handleSubmit = (e: React.FormEvent) => {

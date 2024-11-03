@@ -1,12 +1,5 @@
 import { FC, createContext, useState, useContext, useEffect, ReactNode } from "react";
-
-
-interface Todo {
-    id: number;
-    text: string;
-    completed: boolean;
-}
-
+import { Todo } from "../types/TextType";
 
 interface TodoContextProps {
     todos: Todo[];
@@ -14,8 +7,6 @@ interface TodoContextProps {
     removeTodo: (id: number) => void;
     toggleTodo: (id: number) => void;
 }
-
-
 interface TodoProviderProps {
     children: ReactNode;
 }
@@ -23,9 +14,14 @@ interface TodoProviderProps {
 const TodoContext = createContext<TodoContextProps | undefined>(undefined);
 
 export const TodoProvider: FC<TodoProviderProps> = ({ children }) => {
-
     const [todos, setTodos] = useState<Todo[]>([]);
 
+    useEffect(() => {
+        const savedTodos = localStorage.getItem('todos');
+        if (savedTodos) {
+            setTodos(JSON.parse(savedTodos));
+        }
+    }, []);
     useEffect(() => {
         localStorage.setItem('todos', JSON.stringify(todos));
     }, [todos]);
@@ -39,7 +35,7 @@ export const TodoProvider: FC<TodoProviderProps> = ({ children }) => {
     };
 
     const toggleTodo = (id: number) => {
-        setTodos(todos.map(todo => todo.id === id ? {...todo, completed: !todo.completed} : todo));
+        setTodos(todos.map(todo => todo.id === id ? { ...todo, completed: !todo.completed } : todo));
     };
 
     return (
