@@ -16,6 +16,8 @@ const AddTodoForm:React.FC = () => {
     };
 
     return (
+        <div>
+            <h1>Add Todo</h1>
         <form onSubmit={handleSubmit}>
             <input className="input" type="text"
              value={text}
@@ -24,6 +26,7 @@ const AddTodoForm:React.FC = () => {
               />
             <button type="submit">Add Todo</button>
         </form>
+        </div>
     );
 };
 

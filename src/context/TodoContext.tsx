@@ -1,19 +1,25 @@
 import { FC, createContext, useState, useContext, useEffect, ReactNode } from "react";
 import { Todo } from "../types/TextType";
 
+
+interface TodoProviderProps {
+    children: ReactNode;
+}
 interface TodoContextProps {
     todos: Todo[];
     addTodo: (text: string) => void;
     removeTodo: (id: number) => void;
     toggleTodo: (id: number) => void;
 }
-interface TodoProviderProps {
-    children: ReactNode;
-}
 
-const TodoContext = createContext<TodoContextProps | undefined>(undefined);
+const TodoContext = createContext<TodoContextProps>({
+    todos: [],
+    addTodo: () => {},
+    removeTodo: () => {},
+    toggleTodo: () => {},
+})
 
-export const TodoProvider: FC<TodoProviderProps> = ({ children }) => {
+export const TodoProvider: React.FC<TodoProviderProps> = ({ children }) => {
     const [todos, setTodos] = useState<Todo[]>([]);
 
     useEffect(() => {
